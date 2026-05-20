@@ -44,14 +44,13 @@ public class TestController {
             System.out.println(i);
         });
 
-        opt.orElseThrow(() ->
-            new ExpressionException("value not valid!!!")
-        );
+        opt.orElseThrow(() -> new ExpressionException("value not valid!!!"));
     }
 
     // @GetMapping(path = "/find-user") // localhost:8080/find-user?id=10
-    // public Optional<TestEntity> getUserById(@RequestParam(name = "id") Integer userId) {
-    //     return this.testDao.getUserById(userId);
+    // public Optional<TestEntity> getUserById(@RequestParam(name = "id") Integer
+    // userId) {
+    // return this.testDao.getUserById(userId);
     // }
 
     @GetMapping(path = "/find-user") // localhost:8080/find-user?id=10
@@ -59,12 +58,16 @@ public class TestController {
         // return this.testDao.getUserById(userId);
         Optional<TestEntity> user = testDao.getUserById(userId);
         if (user.isPresent()) {
-            return "UserName : " + user.get().getUsername() + ", Full name is : " + user.get().getFullName();
-        }else {
+            return "UserName : " + user.get().getUsername() + ", Full name is : " +
+                    user.get().getFullName();
+        } else {
             return "user id not exists";
         }
-
     }
 
+    @GetMapping(path = "/delete-user") // localhost:8080/delete-user?id=10
+    public String deleteUserById(@RequestParam(name = "id") Integer userId) {
+        return this.testDao.deleteUserById(userId);
+    }
 
 }

@@ -24,6 +24,16 @@ public class TestDao {
     }
 
     public Optional<TestEntity> getUserById(Integer userId) {
-        return testRepo.findById(userId);
+        return this.testRepo.findById(userId);
+    }
+
+    public String deleteUserById(Integer userId) {
+        Optional<TestEntity> user = this.getUserById(userId);
+        if (user.isPresent()) {
+            this.testRepo.deleteById(userId);
+            return "User by Id " + user.get().getUserId() + " is Deleted";
+        } else {
+            return "user id " + userId + " not exist";
+        }
     }
 }
