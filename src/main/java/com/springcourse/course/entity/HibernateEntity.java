@@ -12,28 +12,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "users")
+@Table(name = "test_hibernate_table")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TestEntity {
+public class HibernateEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Integer userId;
+    @Column(name = "test_id")
+    private Integer testId;
 
-    @Column(name = "username")
-    private String username;
-
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "full_name")
-    private String fullName;
-
-    @Column(name = "create_At")
-    private String createAt;
+    @Column(name = "name")
+    private String name;
 
 }

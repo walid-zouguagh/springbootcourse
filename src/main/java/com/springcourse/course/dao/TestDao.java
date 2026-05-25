@@ -36,4 +36,21 @@ public class TestDao {
             return "user id " + userId + " not exist";
         }
     }
+
+    public TestEntity saveUser(TestEntity testEntity) {
+        return this.testRepo.save(testEntity);
+    }
+
+    public TestEntity updateUser(TestEntity user) {
+        Optional<TestEntity> u = this.getUserById(user.getUserId());
+        if (u.isPresent()) {
+            return this.testRepo.save(user);
+        } else {
+            return null;
+        }
+    }
+
+    public List<TestEntity> getAllUsers() {
+        return this.testRepo.getAllUsers();
+    }
 }
